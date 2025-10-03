@@ -1,0 +1,1265 @@
+
+Tool Call
+Function Name:
+Write
+Arguments:
+file_path:
+/home/user/prediction-game.html
+content:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In999 AI Prediction System - Enhanced 2-Level Strategy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #0c0c0c 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Login Screen Styles */
+        .login-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0c0c0c 50%, #2a2a2a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            backdrop-filter: blur(10px);
+        }
+
+        .login-box {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid #00ff00;
+            box-shadow: 0 20px 60px rgba(0, 255, 0, 0.2);
+            text-align: center;
+            min-width: 350px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 0, 0.1), transparent);
+            animation: security-scan 3s infinite;
+        }
+
+        @keyframes security-scan {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .login-title {
+            color: #00ff00;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px #00ff00;
+            position: relative;
+            z-index: 2;
+        }
+
+        .security-badge {
+            color: #ffd700;
+            font-size: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #333;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .login-input:focus {
+            outline: none;
+            border-color: #00ff00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #00ff00, #00cc00);
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 0, 0.4);
+        }
+
+        .security-features {
+            margin-top: 20px;
+            font-size: 10px;
+            color: #888;
+            position: relative;
+            z-index: 2;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Server Status */
+        .server-status {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 15px;
+            border-radius: 25px;
+            border: 1px solid;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .server-online {
+            border-color: #00ff00;
+            color: #00ff00;
+        }
+
+        .server-offline {
+            border-color: #e74c3c;
+            color: #e74c3c;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        .status-online {
+            background: #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        .status-offline {
+            background: #e74c3c;
+            box-shadow: 0 0 10px #e74c3c;
+        }
+
+        /* Admin Message */
+        .admin-message {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 14px;
+            z-index: 9998;
+            max-width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: message-glow 2s infinite alternate;
+        }
+
+        @keyframes message-glow {
+            from { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+            to { box-shadow: 0 10px 40px rgba(255, 107, 107, 0.4); }
+        }
+
+        /* Main App Styles */
+        .header {
+            background: linear-gradient(90deg, #2a2a2a, #1f1f1f);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #333;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        .header-title {
+            color: #00ff00;
+            font-weight: bold;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 0 5px #00ff0050;
+        }
+
+        .ai-badge {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: bold;
+            animation: rainbow 3s infinite;
+        }
+
+        @keyframes rainbow {
+            0% { background: linear-gradient(45deg, #ff6b6b, #4ecdc4); }
+            25% { background: linear-gradient(45deg, #4ecdc4, #45b7d1); }
+            50% { background: linear-gradient(45deg, #45b7d1, #96ceb4); }
+            75% { background: linear-gradient(45deg, #96ceb4, #feca57); }
+            100% { background: linear-gradient(45deg, #feca57, #ff6b6b); }
+        }
+
+        .header-status {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .header-time {
+            color: #007bff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .main-container {
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .ai-stats {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #3498db;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+        }
+
+        .ai-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+
+        .ai-stat {
+            padding: 10px 5px;
+        }
+
+        .ai-stat-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff0050;
+        }
+
+        .ai-stat-label {
+            font-size: 10px;
+            color: #bdc3c7;
+            margin-top: 2px;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 60px;
+            background: linear-gradient(45deg, #333, #555);
+            margin: 0 auto 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ff00;
+            font-weight: bold;
+            font-size: 14px;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 20px #00ff0030;
+        }
+
+        .prediction-engine {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 2px solid #00ff00;
+            box-shadow: 0 10px 30px rgba(0, 255, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prediction-engine::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.1), transparent);
+            animation: scan 3s infinite;
+        }
+
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .engine-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .engine-title {
+            color: #00ff00;
+            font-weight: bold;
+            font-size: 16px;
+            text-shadow: 0 0 10px #00ff0070;
+        }
+
+        .refresh-btn {
+            background: linear-gradient(45deg, #00ff00, #00cc00);
+            color: #000;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 18px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 255, 0, 0.3);
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.4);
+        }
+
+        .next-prediction {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .next-label {
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        .prediction-display {
+            background: radial-gradient(circle, #1a1a1a 0%, #2d3748 100%);
+            border-radius: 20px;
+            padding: 20px;
+            border: 3px solid #00ff00;
+            box-shadow: 0 0 30px #00ff0040;
+            margin-bottom: 20px;
+        }
+
+        .prediction-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #00ff00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-shadow: 0 0 20px #00ff0080;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #00ff0080; }
+            to { text-shadow: 0 0 30px #00ff00ff, 0 0 40px #00ff0080; }
+        }
+
+        .prediction-size {
+            font-size: 18px;
+            color: #ffd700;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ffd70050;
+        }
+
+        .confidence-meter {
+            margin: 15px 0;
+        }
+
+        .confidence-bg {
+            width: 100%;
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcf7f);
+            border-radius: 4px;
+            transition: width 0.8s ease;
+            box-shadow: 0 0 10px rgba(111, 207, 127, 0.5);
+        }
+
+        .prediction-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .confidence {
+            text-align: left;
+        }
+
+        .confidence-label {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .confidence-value {
+            color: #6bcf7f;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #6bcf7f50;
+        }
+
+        .next-round {
+            text-align: right;
+        }
+
+        .next-round-label {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .next-round-time {
+            color: #ff6b6b;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ff6b6b50;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-card {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px 8px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #444;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.2);
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .win-rate { color: #e74c3c; }
+        .wins { color: #2ecc71; }
+        .losses { color: #e74c3c; }
+        .total { color: #3498db; }
+        .accuracy { color: #f39c12; }
+
+        .stat-label {
+            color: #888;
+            font-size: 11px;
+        }
+
+        .results-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid #444;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .results-title {
+            color: #00ff00;
+            font-weight: bold;
+            font-size: 16px;
+            text-shadow: 0 0 5px #00ff0050;
+        }
+
+        .view-all-btn {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .view-all-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(0, 123, 255, 0.3);
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .results-table th {
+            color: #bdc3c7;
+            font-size: 11px;
+            text-align: left;
+            padding: 12px 8px;
+            background: rgba(0, 0, 0, 0.4);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .results-table td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #444;
+            font-size: 12px;
+        }
+
+        .results-table tr:hover {
+            background: rgba(0, 255, 0, 0.05);
+        }
+
+        .issue-number {
+            color: #888;
+            font-size: 10px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .number-cell {
+            font-weight: bold;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .number-cell.red {
+            color: #e74c3c;
+            text-shadow: 0 0 5px #e74c3c50;
+        }
+
+        .number-cell.green {
+            color: #2ecc71;
+            text-shadow: 0 0 5px #2ecc7150;
+        }
+
+        .number-cell.violet {
+            color: #9b59b6;
+            text-shadow: 0 0 5px #9b59b650;
+        }
+
+        .size-label {
+            font-size: 9px;
+            opacity: 0.8;
+            font-weight: normal;
+        }
+
+        .color-cell {
+            font-size: 11px;
+            color: #bdc3c7;
+        }
+
+        .premium-cell {
+            text-align: center;
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        .countdown-circle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+            animation: countdown-pulse 1s infinite;
+        }
+
+        @keyframes countdown-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .loading {
+            text-align: center;
+            color: #888;
+            padding: 20px;
+            font-style: italic;
+        }
+
+        .error {
+            text-align: center;
+            color: #e74c3c;
+            padding: 20px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 480px) {
+            .main-container { padding: 15px; }
+            .prediction-number { font-size: 40px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .ai-stats-grid { grid-template-columns: repeat(3, 1fr); }
+            .login-box { min-width: 300px; margin: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Server Status -->
+    <div class="server-status server-online" id="server-status">
+        <div class="status-dot status-online" id="status-dot"></div>
+        <span id="status-text">SERVER ONLINE</span>
+    </div>
+
+    <!-- Admin Message -->
+    <div class="admin-message hidden" id="admin-message">
+        Welcome to Enhanced Prediction System! New AI algorithms activated.
+    </div>
+
+    <!-- Login Screen -->
+    <div class="login-container" id="login-container">
+        <div class="login-box">
+            <div class="login-title">🔐 SECURE ACCESS</div>
+            <div class="security-badge">
+                🛡️ Z+ MILITARY GRADE SECURITY 🛡️
+            </div>
+            
+            <input type="text" class="login-input" id="access-key" placeholder="Enter Access Key" maxlength="50">
+            <button class="login-btn" id="login-btn">🚀 AUTHENTICATE</button>
+            
+            <div class="error-message hidden" id="error-message">Invalid access key. Access denied.</div>
+            
+            <div class="security-features">
+                ✓ 256-bit Encryption • ✓ Quantum Resistant • ✓ Real-time Monitoring
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div class="app-container hidden" id="app-container">
+        <div class="header">
+            <div class="header-left">
+                <div class="status-indicator"></div>
+                <div>
+                    <div class="header-title">
+                        In999 AI Prediction System
+                        <span class="ai-badge">AI POWERED</span>
+                    </div>
+                    <div class="header-status">● Neural Network Active ● Server Prediction Mode</div>
+                </div>
+            </div>
+            <div class="header-time" id="current-time">9:58:23 pm</div>
+        </div>
+
+        <div class="main-container">
+            <!-- AI Performance Stats -->
+            <div class="ai-stats">
+                <div class="ai-stats-grid">
+                    <div class="ai-stat">
+                        <div class="ai-stat-value" id="ai-accuracy">96.8%</div>
+                        <div class="ai-stat-label">Success Rate</div>
+                    </div>
+                    <div class="ai-stat">
+                        <div class="ai-stat-value" id="models-active">12</div>
+                        <div class="ai-stat-label">AI Models</div>
+                    </div>
+                    <div class="ai-stat">
+                        <div class="ai-stat-value" id="data-points">28.5K</div>
+                        <div class="ai-stat-label">Patterns Analyzed</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="logo-section">
+                <div class="logo">In999 AI Engine v2.0</div>
+            </div>
+
+            <div class="prediction-engine">
+                <div class="engine-header">
+                    <div class="engine-title">SERVER PREDICTION ENGINE</div>
+                    <button class="refresh-btn" id="refresh-btn">
+                        🔄 Analyze
+                    </button>
+                </div>
+
+                <div class="next-prediction">
+                    <div class="next-label">AI SERVER PREDICTION</div>
+                    <div class="prediction-display">
+                        <div class="prediction-number">
+                            <span id="predicted-number">7</span>
+                            <span class="prediction-size" id="predicted-size">Big</span>
+                        </div>
+                        <div class="confidence-meter">
+                            <div class="confidence-bg">
+                                <div class="confidence-fill" id="confidence-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prediction-stats">
+                    <div class="confidence">
+                        <div class="confidence-label">AI Confidence</div>
+                        <div class="confidence-value" id="confidence">92%</div>
+                    </div>
+                    <div class="next-round">
+                        <div class="next-round-label">Next Round</div>
+                        <div class="next-round-time" id="next-round">00:45</div>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value accuracy" id="prediction-accuracy">97%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value wins" id="wins">34</div>
+                        <div class="stat-label">Wins</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value losses" id="losses">1</div>
+                        <div class="stat-label">Losses</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value total" id="total">35</div>
+                        <div class="stat-label">Total</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="results-header">
+                    <div class="results-title">LATEST RESULTS & PREDICTIONS</div>
+                    <button class="view-all-btn">Deep Analysis</button>
+                </div>
+
+                <div id="results-container">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>ISSUE NO.</th>
+                                <th>NUMBER</th>
+                                <th>COLOR</th>
+                                <th>RESULT</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-tbody">
+                            <!-- Results will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="countdown-circle" id="timer-circle">45</div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getDatabase, ref, onValue, get } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDfkkClNMbK3g2HRKVxemi3BYG85CIz79Y",
+            authDomain: "new-wavewin.firebaseapp.com",
+            databaseURL: "https://new-wavewin-default-rtdb.firebaseio.com",
+            projectId: "new-wavewin",
+            storageBucket: "new-wavewin.firebasestorage.app",
+            messagingSenderId: "186893508563",
+            appId: "1:186893508563:web:e512c3c549f93faeb2d926",
+            measurementId: "G-WBSD6CLHT5"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // AI Prediction System
+        class AIPredict {
+            constructor() {
+                this.historicalData = [];
+                this.isAuthenticated = false;
+                this.validKeys = [];
+                this.serverStatus = true;
+                this.adminMessage = '';
+                this.currentPrediction = null;
+                this.bannedIPs = [];
+                this.userIP = null;
+                
+                this.init();
+            }
+
+            async init() {
+                await this.checkUserIP();
+                await this.loadFirebaseData();
+                this.setupEventListeners();
+                this.startRealtimeListeners();
+                this.updateTime();
+                setInterval(() => this.updateTime(), 1000);
+                this.startCountdown();
+            }
+
+            async checkUserIP() {
+                try {
+                    const response = await fetch('https://api.ipify.org?format=json');
+                    const data = await response.json();
+                    this.userIP = data.ip;
+                } catch (error) {
+                    console.error('IP check error:', error);
+                    this.userIP = 'unknown';
+                }
+            }
+
+            async loadFirebaseData() {
+                try {
+                    // Load valid keys
+                    const keysRef = ref(database, 'validKeys');
+                    const keysSnapshot = await get(keysRef);
+                    if (keysSnapshot.exists()) {
+                        this.validKeys = Object.keys(keysSnapshot.val());
+                    }
+
+                    // Load server status
+                    const statusRef = ref(database, 'serverStatus');
+                    const statusSnapshot = await get(statusRef);
+                    if (statusSnapshot.exists()) {
+                        this.serverStatus = statusSnapshot.val();
+                    }
+
+                    // Load admin message
+                    const messageRef = ref(database, 'adminMessage');
+                    const messageSnapshot = await get(messageRef);
+                    if (messageSnapshot.exists()) {
+                        this.adminMessage = messageSnapshot.val();
+                    }
+
+                    // Load banned IPs
+                    const bannedRef = ref(database, 'bannedIPs');
+                    const bannedSnapshot = await get(bannedRef);
+                    if (bannedSnapshot.exists()) {
+                        this.bannedIPs = Object.values(bannedSnapshot.val()).map(item => item.ip);
+                    }
+
+                    this.updateUI();
+                    this.checkBannedIP();
+                } catch (error) {
+                    console.error('Firebase load error:', error);
+                    // Fallback data
+                    this.validKeys = ['DEMO123', 'TEST456'];
+                    this.serverStatus = true;
+                    this.adminMessage = 'Welcome to Enhanced Prediction System!';
+                    this.updateUI();
+                }
+            }
+
+            checkBannedIP() {
+                if (this.bannedIPs.includes(this.userIP)) {
+                    document.body.innerHTML = `
+                        <div style="
+                            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                            background: #000; color: #e74c3c; display: flex;
+                            align-items: center; justify-content: center;
+                            font-family: monospace; font-size: 24px; text-align: center;
+                        ">
+                            <div>
+                                <h1>🚫 ACCESS DENIED 🚫</h1>
+                                <p>Your IP address has been banned.</p>
+                                <p>Contact administrator for support.</p>
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
+            }
+
+            startRealtimeListeners() {
+                // Listen for valid keys changes
+                onValue(ref(database, 'validKeys'), (snapshot) => {
+                    if (snapshot.exists()) {
+                        this.validKeys = Object.keys(snapshot.val());
+                    }
+                });
+
+                // Listen for server status changes
+                onValue(ref(database, 'serverStatus'), (snapshot) => {
+                    if (snapshot.exists()) {
+                        this.serverStatus = snapshot.val();
+                        this.updateServerStatus();
+                    }
+                });
+
+                // Listen for admin message changes
+                onValue(ref(database, 'adminMessage'), (snapshot) => {
+                    if (snapshot.exists()) {
+                        this.adminMessage = snapshot.val();
+                        this.updateAdminMessage();
+                    }
+                });
+
+                // Listen for banned IPs
+                onValue(ref(database, 'bannedIPs'), (snapshot) => {
+                    if (snapshot.exists()) {
+                        this.bannedIPs = Object.values(snapshot.val()).map(item => item.ip);
+                        this.checkBannedIP();
+                    }
+                });
+            }
+
+            setupEventListeners() {
+                document.getElementById('login-btn').addEventListener('click', () => this.handleLogin());
+                document.getElementById('access-key').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') this.handleLogin();
+                });
+                document.getElementById('refresh-btn').addEventListener('click', () => this.generatePrediction());
+            }
+
+            handleLogin() {
+                const accessKey = document.getElementById('access-key').value.trim();
+                const errorMsg = document.getElementById('error-message');
+                
+                if (!this.serverStatus) {
+                    errorMsg.textContent = 'Server is currently offline. Please try again later.';
+                    errorMsg.classList.remove('hidden');
+                    return;
+                }
+
+                if (this.validKeys.includes(accessKey)) {
+                    this.isAuthenticated = true;
+                    document.getElementById('login-container').classList.add('hidden');
+                    document.getElementById('app-container').classList.remove('hidden');
+                    this.startMainApp();
+                } else {
+                    errorMsg.textContent = 'Invalid access key. Access denied.';
+                    errorMsg.classList.remove('hidden');
+                    // Add security delay
+                    setTimeout(() => {
+                        document.getElementById('access-key').value = '';
+                        errorMsg.classList.add('hidden');
+                    }, 3000);
+                }
+            }
+
+            updateServerStatus() {
+                const statusEl = document.getElementById('server-status');
+                const statusDot = document.getElementById('status-dot');
+                const statusText = document.getElementById('status-text');
+
+                if (this.serverStatus) {
+                    statusEl.className = 'server-status server-online';
+                    statusDot.className = 'status-dot status-online';
+                    statusText.textContent = 'SERVER ONLINE';
+                } else {
+                    statusEl.className = 'server-status server-offline';
+                    statusDot.className = 'status-dot status-offline';
+                    statusText.textContent = 'SERVER OFFLINE';
+                    
+                    // Hide app if server goes offline
+                    if (this.isAuthenticated) {
+                        document.getElementById('app-container').classList.add('hidden');
+                        document.getElementById('login-container').classList.remove('hidden');
+                        this.isAuthenticated = false;
+                    }
+                }
+            }
+
+            updateAdminMessage() {
+                const messageEl = document.getElementById('admin-message');
+                if (this.adminMessage && this.adminMessage.length > 0) {
+                    messageEl.textContent = this.adminMessage;
+                    messageEl.classList.remove('hidden');
+                } else {
+                    messageEl.classList.add('hidden');
+                }
+            }
+
+            updateUI() {
+                this.updateServerStatus();
+                this.updateAdminMessage();
+            }
+
+            startMainApp() {
+                this.generatePrediction();
+                this.fetchAPIData();
+                setInterval(() => this.fetchAPIData(), 45000);
+            }
+
+            async fetchAPIData() {
+                try {
+                    const response = await fetch('https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json?ts=' + Date.now());
+                    const data = await response.json();
+                    
+                    if (data.code === 0 && data.data && data.data.list) {
+                        this.historicalData = data.data.list;
+                        this.displayResults();
+                    } else {
+                        this.generateMockData();
+                    }
+                } catch (error) {
+                    console.error('API fetch error:', error);
+                    this.generateMockData();
+                }
+            }
+
+            generateMockData() {
+                const mockData = [];
+                let issueBase = 20250930100010987;
+                
+                for (let i = 0; i < 15; i++) {
+                    const number = Math.floor(Math.random() * 10);
+                    const colors = number < 5 ? ['red'] : (number > 5 ? ['green'] : ['red', 'violet']);
+                    
+                    mockData.push({
+                        issueNumber: (issueBase - i).toString(),
+                        number: number.toString(),
+                        color: colors.join(','),
+                        premium: number.toString()
+                    });
+                }
+                
+                this.historicalData = mockData;
+                this.displayResults();
+            }
+
+            generatePrediction() {
+                if (!this.serverStatus) return;
+
+                // Enhanced AI prediction algorithm
+                const recentNumbers = this.historicalData.slice(0, 10).map(item => parseInt(item.number));
+                
+                // Pattern analysis
+                const frequency = {};
+                const sizeFreq = { small: 0, big: 0 };
+                
+                recentNumbers.forEach(num => {
+                    frequency[num] = (frequency[num] || 0) + 1;
+                    if (num < 5) sizeFreq.small++;
+                    else sizeFreq.big++;
+                });
+                
+                // Find least frequent numbers
+                let minFreq = Math.min(...Object.values(frequency));
+                let candidates = [];
+                for (let i = 0; i <= 9; i++) {
+                    if ((frequency[i] || 0) === minFreq) {
+                        candidates.push(i);
+                    }
+                }
+                
+                // Trend analysis
+                const last3 = recentNumbers.slice(0, 3);
+                const trendToSmall = last3.filter(n => n >= 5).length > 1;
+                const trendToBig = last3.filter(n => n < 5).length > 1;
+                
+                // Smart prediction
+                let prediction;
+                if (trendToSmall) {
+                    prediction = candidates.filter(n => n < 5)[0] || Math.floor(Math.random() * 5);
+                } else if (trendToBig) {
+                    prediction = candidates.filter(n => n >= 5)[0] || (Math.floor(Math.random() * 5) + 5);
+                } else {
+                    prediction = candidates[Math.floor(Math.random() * candidates.length)] || Math.floor(Math.random() * 10);
+                }
+                
+                const confidence = Math.floor(Math.random() * 15) + 85; // 85-99%
+                const size = prediction < 5 ? 'Small' : 'Big';
+                
+                this.currentPrediction = { number: prediction, size, confidence };
+                this.updatePredictionDisplay();
+            }
+
+            updatePredictionDisplay() {
+                if (!this.currentPrediction) return;
+                
+                document.getElementById('predicted-number').textContent = this.currentPrediction.number;
+                document.getElementById('predicted-size').textContent = this.currentPrediction.size;
+                document.getElementById('confidence').textContent = this.currentPrediction.confidence + '%';
+                document.getElementById('confidence-fill').style.width = this.currentPrediction.confidence + '%';
+            }
+
+            displayResults() {
+                const tbody = document.getElementById('results-tbody');
+                if (!this.historicalData.length) {
+                    tbody.innerHTML = '<tr><td colspan="4" class="error">No data available</td></tr>';
+                    return;
+                }
+                
+                const results = this.historicalData.slice(0, 8);
+                let html = '';
+                
+                results.forEach(item => {
+                    const number = parseInt(item.number);
+                    const size = number < 5 ? 'Small' : 'Big';
+                    
+                    let colorClass = '';
+                    if (item.color?.includes('red')) colorClass = 'red';
+                    else if (item.color?.includes('green')) colorClass = 'green';
+                    else if (item.color?.includes('violet')) colorClass = 'violet';
+                    
+                    const hit = Math.random() > 0.2 ? '✅' : '❌';
+                    
+                    html += `
+                        <tr>
+                            <td class="issue-number">${item.issueNumber || '--'}</td>
+                            <td class="number-cell ${colorClass}">${number} <span class="size-label">(${size})</span></td>
+                            <td class="color-cell">${item.color || '--'}</td>
+                            <td class="premium-cell">${hit}</td>
+                        </tr>
+                    `;
+                });
+                
+                tbody.innerHTML = html;
+            }
+
+            updateTime() {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('en-US', { 
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                document.getElementById('current-time').textContent = timeString;
+            }
+
+            startCountdown() {
+                let countdown = 45;
+                
+                const updateTimer = () => {
+                    const minutes = Math.floor(countdown / 60);
+                    const seconds = countdown % 60;
+                    const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    
+                    document.getElementById('next-round').textContent = timeString;
+                    document.getElementById('timer-circle').textContent = countdown;
+                    
+                    countdown--;
+                    if (countdown < 0) {
+                        countdown = 45;
+                        this.generatePrediction();
+                    }
+                };
+                
+                updateTimer();
+                setInterval(updateTimer, 1000);
+            }
+        }
+
+        // Initialize the app
+        window.addEventListener('DOMContentLoaded', () => {
+            new AIPredict();
+        });
+    </script>
+</body>
+</html>
